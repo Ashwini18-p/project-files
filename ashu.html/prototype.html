@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //prototypal inheritance
+let person = {
+    greet: function() {
+        alert("Hello!");
+    }
+};
+let student = Object.create(person);
+
+student.study = function() {
+    alert("Studying...");
+};
+student.greet(); 
+student.study();
+
+
+
+
+
+//creating f.prototype
+        function Person(name) {
+    this.name = name;
+}
+Person.prototype.greet = function () {
+    alert(`Hello, my name is ${this.name}`);
+};
+
+let person1 = new Person("Ash");
+let person2 = new Person("Darshik");
+person1.greet(); 
+person2.greet(); 
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //class code
+        class flower {
+  constructor(name, color) {
+    this.name = name;
+    this.color = color;
+  }
+  greet() {
+    alert(`Hello, iam cute flower ${this.name} and I am ${this.color} color `);
+  }
+}
+const flower1 = new flower("rose", "pink");
+flower1.greet(); 
+
+
+//creating class inheritance code
+class dog {
+    constructor (name) {
+        this.name = name;
+    }
+    makesound () {
+        alert(`${this.name} makes a sound`);
+    }
+}
+class rabbit extends dog {
+    chew() {
+        alert(`${this.name} chew`);
+    }
+}
+const myrabbit = new rabbit("reo");
+myrabbit.makesound();
+myrabbit.chew();
+
+//creating method overriding
+class dog {
+    makesound () {
+        alert("dog makes a sound");
+    }
+}
+class rabbit extends dog {
+    makesound () {
+        alert("rabbit chews");
+    }
+       
+}
+const myrabbit = new rabbit();
+myrabbit.makesound();
+
+
+
+
+// extending built in class
+
+class PowerArray extends Array {
+  isEmpty() {
+    return this.length === 0;
+  }
+}
+
+let arr = new PowerArray(1, 2, 5, 10, 50);
+alert(arr.isEmpty()); 
+
+let filteredArr = arr.filter(item => item >= 10);
+alert(filteredArr); 
+alert(filteredArr.isEmpty()); 
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
