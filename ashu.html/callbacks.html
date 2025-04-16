@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//     function greeting(name) {
+//     alert(`Hello, ${name}!`);
+// }
+
+// function processUserInput(callback) {
+//     let name = "Ash";
+//     setTimeout(() => {
+//         callback(name); // Now this runs after 2 seconds
+//     }, 2000);
+// }
+
+// processUserInput(greeting);
+
+//callback in callback..............****
+// function step1(callback) {
+//     setTimeout(() => {
+//         alert("Step 1: Ordered laptop");
+//         callback();
+//     }, 1000);
+// }
+
+// function step2(callback) {
+//     setTimeout(() => {
+//         alert("Step 2: Installed software");
+//         callback();
+//     }, 1000);
+// }
+
+// function step3() {
+//     setTimeout(() => {
+//         alert("Step 3: Started working");
+//     }, 1000);
+// }
+
+// // Nested callbacks (callback inside callback inside callback)
+// step1(() => {
+//     step2(() => {
+//         step3();
+//     });
+// });
+
+
+
+//handling errors in clalbacks...............*****
+// function getDataFromServer(callback) {
+//     setTimeout(() => {
+//         let error = false; // change to true to simulate error
+
+//         if (error) {
+//             callback("Server error: Unable to fetch data", null);
+//         } else {
+//             callback(null, { user: "Ash", age: 24 });
+//         }
+//     }, 1000);
+// }
+
+// getDataFromServer(function(err, data) {
+//     if (err) {
+//         console.error("Error:", err);
+//     } else {
+//         alert(`Data received: ${JSON.stringify(data)}`);
+//     }
+// });
+
+
+//promises..............
+// let pizzaOrder = new Promise(function(resolve, reject) {
+//   setTimeout(() => {
+//     let isRestaurantOpen = true;
+
+//     if (isRestaurantOpen) {
+//       resolve("Pizza delivered!");
+//     } else {
+//       reject("Restaurant is closed.");
+//     }
+//   }, 3000); // simulate 3 second wait
+// });
+
+// pizzaOrder
+//   .then(result => alert(result))
+//   .catch(error => alert(error))
+//   .finally(() => alert("Order process done."));
+
+
+//promise chaining..............***
+// new Promise((resolve, reject) => {
+//   resolve(5);
+// })
+// .then(result => {
+//   alert("Step 1: " + result); // 5
+//   return result * 2;
+// })
+// .then(result => {
+//   alert("Step 2: " + result); // 10
+//   return result + 3;
+// })
+// .then(result => {
+//   alert("Step 3: " + result); // 13
+// })
+// .catch(error => {
+//   alert("Error: " + error);
+// });
+
+
+//promises rethrowing erros............****
+// function validateName(name) {
+//     try {
+//       if (!name || typeof name !== "string") {
+//         throw new Error("Invalid name provided");
+//       }
+//       alert("Name is valid: " + name);
+//     } catch (err) {
+//       alert("validateName error: " + err.message);
+//       throw err; // Rethrow for outer function
+//     }
+//   }
+
+//   function registerUser() {
+//     try {
+//       const userName = ""; // Try changing this to a valid name like "Ash"
+//       validateName(userName);
+//       alert("User registered successfully.");
+//     } catch (err) {
+//       alert("User registration failed: " + err.message);
+//     }
+//   }
+
+//   registerUser();
+
+
+
+  ///promise.all without error............*****
+
+//   const p1 = Promise.resolve("A");
+// const p2 = Promise.resolve("B");
+// const p3 = Promise.resolve("C");
+
+// Promise.all([p1, p2, p3])
+//   .then(results => {
+//     alert("Results: " + results.join(", ")); // Alerts: Results: A, B, C
+//   })
+//   .catch(error => {
+//     alert("Error: " + error);
+//   });
+
+  //promise.all with error......*****
+//   const p1 = Promise.resolve("Success 1");
+// const p2 = Promise.reject("Failed 2");
+// const p3 = Promise.resolve("Success 3");
+
+// Promise.all([p1, p2, p3])
+//   .then(results => {
+//     alert("Results: " + results.join(", "));
+//   })
+//   .catch(error => {
+//     alert("Error: " + error); // "Failed 2"
+//   });
+
+
+//promise.allsettled....................******
+
+// const p1 = Promise.resolve("Success A");
+// const p2 = Promise.reject("Failed B");
+// const p3 = Promise.resolve("Success C");
+
+// Promise.allSettled([p1, p2, p3])
+//   .then(results => {
+//     console.log(results);
+//   });
+
+//promise.race.....................*****
+// const p1 = new Promise(resolve => setTimeout(() => resolve("First"), 200));
+// const p2 = new Promise(resolve => setTimeout(() => resolve("Second"), 100));
+
+// Promise.race([p1, p2])
+//   .then(result => console.log("Winner:", result));
+
+
+//promise rejection.................******
+// const p1 = new Promise((_, reject) => setTimeout(() => reject("Failed fast"), 100));
+// const p2 = new Promise(resolve => setTimeout(() => resolve("Success but late"), 200));
+
+// Promise.race([p1, p2])
+//   .then(result => console.log("Resolved with:", result))
+//   .catch(error => console.log("Rejected with:", error));
+
+
+
+// //microtask...........******
+// console.log("Start");
+
+// setTimeout(() => {
+//   console.log("Macrotask - setTimeout");
+// }, 0);
+
+// Promise.resolve().then(() => {
+//   console.log("Microtask - Promise");
+// });
+
+// queueMicrotask(() => {
+//   console.log("Microtask - queueMicrotask");
+// });
+
+// console.log("End");
+
+
+
+// //async...........******
+// async function sayHello() {
+//   return "Hello";
+// }
+
+// sayHello().then(alert); // alerts "Hello"
+
+//await................*****
+// async function f() {
+
+// let promise = new Promise((resolve, reject) => {
+//   setTimeout(() => resolve("done!"), 1000)
+// });
+
+// let result = await promise; // wait until the promise resolves (*)
+
+// alert(result); // "done!"
+// }
+
+// f();
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

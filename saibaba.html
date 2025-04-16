@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       const user = {
+    name: "Ash",
+    role: "Software Engineer",
+    showDetails: function() {
+        alert(`Name: ${this.name}, Role: ${this.role}`);
+    }
+};
+
+// Calling the method directly (works fine)
+user.showDetails();  
+// Output: Name: Ash, Role: Software Engineer
+
+// Passing the method to setTimeout (this becomes undefined)
+setTimeout(user.showDetails, 1000);  
+// Output: Name: undefined, Role: undefined (or error in strict mode)
+
+// Fixing it using bind()
+setTimeout(user.showDetails.bind(user), 2000);  
+// Output (after 2 seconds): Name: Ash, Role: Software Engineer
+ 
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proxy</title>
+</head>
+<body>
+  <script>
+    //Basic get and set interception..............*********
+//     const target = {
+//   name: "Ash"
+// };
+
+// const handler = {
+//   get: function(obj, prop) {
+//     console.log(`Getting property: ${prop}`);
+//     return obj[prop];
+//   },
+//   set: function(obj, prop, value) {
+//     console.log(`Setting property: ${prop} = ${value}`);
+//     obj[prop] = value;
+//     return true; 
+//   }
+// };
+
+// const proxy = new Proxy(target, handler);
+
+// console.log(proxy.name);       
+// proxy.name = "Darshik";        
+// console.log(target.name);      
+
+
+//delete property...................************
+// const obj = { a: 1, b: 2 };
+
+// const proxy = new Proxy(obj, {
+//   deleteProperty(target, prop) {
+//     console.log(`Deleting property: ${prop}`);
+//     delete target[prop];
+//     return true;
+//   }
+// });
+
+// delete proxy.a;   
+// console.log(obj);
+
+
+//has in opeartor............***********                 
+// const secretObj = {
+//   password: "1234",
+//   username: "ash"
+// };
+
+// const secureProxy = new Proxy(secretObj, {
+//   has(target, prop) {
+//     if (prop === "password") return false;
+//     return prop in target;
+//   }
+// });
+
+// console.log("username" in secureProxy);
+// console.log("password" in secureProxy); 
+
+
+
+//has in range.............*************
+// const range = {
+//   start: 1,
+//   end: 100
+// };
+
+// const rangeProxy = new Proxy(range, {
+//   has(target, number) {
+//     number = Number(number); 
+//     return number >= target.start && number <= target.end;
+//   }
+// });
+
+// console.log(50 in rangeProxy);   
+// console.log(150 in rangeProxy);  
+// console.log("25" in rangeProxy); 
+
+//eval..............*******************
+// let result = eval("2 + 3 * 4");
+// console.log(result);
+
+//eval example 2.............**********
+// eval("var x = 100;");
+// console.log(x); 
+
+//currying......normal function*******
+// function add(a, b) {
+//   return a + b;
+// }
+// console.log(add(2, 3)); // Output: 5
+
+//curried version...........********
+// function curriedAdd(a) {
+//   return function(b) {
+//     return a + b;
+//   }
+// }
+// console.log(curriedAdd(2)(3)); // Output: 5
+
+
+// function curry(fn) {
+//   return function curried(...args) {
+//     if (args.length >= fn.length) {
+//       return fn.apply(this, args);
+//     }
+
+//     return function (...nextArgs) {
+//       return curried.apply(this, args.concat(nextArgs));
+//     };
+//   };
+// }
+
+// function sum(a, b, c) {
+//   return a + b + c;
+// }
+
+// const curriedSum = curry(sum);
+
+// console.log(curriedSum(1)(2)(3));     // 6
+// console.log(curriedSum(1, 2)(3));     // 6
+// console.log(curriedSum(1)(2, 3));     // 6
+// console.log(curriedSum(1, 2, 3));     // 6
+
+// let emoji = '\u{1F60A}';
+// console.log(emoji); // 😊
+
+// let telugu = '\u0C06';
+// console.log(telugu); // Output: ఆ
+
+alert( "\u{20331}" ); // 佫, a rare Chinese character (long Unicode)
+alert( "\u{1F60D}" );
+
+// let ఆ = "This is Telugu letter";
+// let 😊 = "This is a smile";
+
+// console.log(ఆ);   // Output: This is Telugu letter
+// console.log(😊);   // Output: This is a smile
+
+
+
+
+
+
+
+
+  </script>  
+</body>
+</html>

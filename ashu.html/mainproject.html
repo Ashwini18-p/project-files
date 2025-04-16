@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Info Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    .form-container {
+      max-width: 400px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Patient Details</h2>
+
+    <form id="patientForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="blood">Blood Group:</label>
+      <select id="blood" name="blood" required>
+        <option value="">--Select--</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+      </select>
+
+      <label for="doctor">Choose Doctor:</label>
+      <select id="doctor" name="doctor" required>
+        <option value="">--Select--</option>
+        <option value="Dr. Asha Rao">Dr. Asha Rao</option>
+        <option value="Dr. Kiran Patel">Dr. Kiran Patel</option>
+        <option value="Dr. Neha Reddy">Dr. Neha Reddy</option>
+        <option value="Dr. Arjun Das">Dr. Arjun Das</option>
+        <option value="Dr. Meena Sharma">Dr. Meena Sharma</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("patientForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevents page reload
+
+      // Get form values
+      const name = document.getElementById("name").value;
+      const dob = document.getElementById("dob").value;
+      const blood = document.getElementById("blood").value;
+      const doctor = document.getElementById("doctor").value;
+
+      // Display the collected data
+      alert(
+        `Submitted Details:\n\nName: ${name}\nDOB: ${dob}\nBlood Group: ${blood}\nDoctor: ${doctor}`
+      );
+
+      // Optionally reset the form
+      document.getElementById("patientForm").reset();
+    });
+  </script>
+
+</body>
+</html>

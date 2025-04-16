@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<!-- //domtree ..accessing.........*********** -->
+document.body.style.background = 'red'; // make the background red
+
+setTimeout(() => document.body.style.background = '', 3000); 
+
+<!-- autocorrection.............************ -->
+<p>Hello
+    <li>Mom
+    <li>and
+    <li>Dad
+<!--     
+h tml siblings and parent................************ -->
+alert( document.head.nextSibling ); // HTMLBodyElement
+alert( document.body.previousSibling );
+      
+<div id="elem">
+        <div id="elem-content">Element</div>
+      </div>
+
+<!-- 
+      //matches........*********** -->
+
+      <button id="myBtn" class="primary">Click Me</button>
+<!-- //closest.........******* -->
+<div class="outer">
+    <div class="inner">
+      <button id="myBtn">Click Me</button>
+    </div>
+  <!-- </div>
+  //live collections......*********** -->
+  <div>First div</div>
+
+  <!-- //get elementbyselector............********** -->
+  <p class="highlight">First</p>
+  <p class="highlight">Second</p>
+  <!-- get elements by tag name........********** -->
+  <ul>
+    <li>One</li>
+    <li>Two</li>
+  </ul>
+
+  <!-- //querySelectorall.************ -->
+  <h2>Fruits List</h2>
+<ul>
+  <li class="fruit">Apple</li>
+  <li class="fruit">Banana</li>
+  <li>Carrot</li>
+  <li class="fruit">Mango</li>
+</ul>
+
+
+
+
+
+
+
+
+    <script>
+//  let elem = document.getElementById('elem')
+// elem.style.background = 'red'
+
+
+// only with id.................*************
+// elem.style.background = 'red';
+
+//matches....*********
+// const btn = document.getElementById("myBtn");
+
+// if (btn.matches(".primary")) {
+//   console.log("Button has the 'primary' class.");
+// }
+//closest.......******
+// const btn = document.getElementById("myBtn");
+
+// const outerDiv = btn.closest(".outer");
+
+// console.log(outerDiv); // <div class="outer">...</div>
+
+//live collections.....*****
+// let divs = document.getElementsByTagName('div');
+//   alert(divs.length); // 1
+
+//get elementbyselctor..............********
+// let firstHighlight = document.querySelector(".highlight");
+//  firstHighlight.textContent = "Changed!";
+//get elements by tag name................*************
+// let listItems = document.getElementsByTagName("li");
+//   listItems[1].style.color = "green"; 
+//get elements by queryselectorall...........***********
+const fruits = document.querySelectorAll(".fruit");
+
+    </script>
+</body>
+</html>

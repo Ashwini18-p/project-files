@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        ///generator functions..............*******
+//         function* greet() {
+//   yield 'Hello';
+//   yield 'Hi';
+//   yield 'Namaste';
+// }
+
+// const gen = greet();
+
+// console.log(gen.next().value); // { value: 'Hello', done: false }
+// console.log(gen.next()); // { value: 'Hi', done: false }
+// console.log(gen.next()); // { value: 'Namaste', done: false }
+// console.log(gen.next()); // { value: undefined, done: true }
+
+
+//generator iterators..........*****
+// function* colors() {
+//   yield 'Red';
+//   yield 'Green';
+//   yield 'Blue';
+// }
+
+// for (let color of colors()) {
+//   console.log(color);
+// }
+
+
+// function* greet() {
+//   yield 'Hello';
+//   yield 'Hi';
+//   yield 'Namaste';
+// }
+
+// const gen = greet();
+
+// console.log(typeof gen[Symbol.iterator]); 
+// console.log(gen[Symbol.iterator]() === gen); 
+// for (let word of greet()) {
+//   console.log(word);
+// }
+
+//generator ccomposition...........*****
+// function* gen1() {
+//   yield 'A';
+//   yield 'B';
+// }
+
+// function* gen2() {
+//   yield* gen1();  // include gen1's values here
+//   yield 'C';
+//   yield 'D';
+// }
+
+// for (let value of gen2()) {
+//   console.log(value);
+// }
+
+
+// //yield two way sreet..........******
+// function* twoWay() {
+//   const name = yield 'What is your name?';
+//   console.log('Inside Generator:', name);
+//   yield `Hello, ${name}!`;
+// }
+
+// const gen = twoWay();
+
+// console.log(gen.next().value);     
+// console.log(gen.next('Ash').value);
+
+
+
+
+
+
+
+
+
+
+//async iterables..............**********
+// const myAsyncIterable = {
+//   [Symbol.asyncIterator]() {
+//     let i = 0;
+//     return {
+//       async next() {
+//         if (i < 3) {
+//           return new Promise(resolve => {
+//             setTimeout(() => {
+//               resolve({ value: i++, done: false });
+//             }, 1000); // wait 1 second
+//           });
+//         } else {
+//           return { done: true };
+//         }
+//       }
+//     };
+//   }
+// };
+// (async () => {
+//   for await (const num of myAsyncIterable) {
+//     console.log(num); // 0, 1, 2 (1 second apart)
+//   }
+// })();
+
+
+
+
+//async generators....................**********
+async function* simulateFileReader(lines) {
+  for (const line of lines) {
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    yield line;
+  }
+}
+
+const fakeFileLines = [
+  "2025-04-09 10:00:01 - User logged in",
+  "2025-04-09 10:02:15 - User clicked on dashboard",
+  "2025-04-09 10:05:45 - User logged out",
+];
+
+(async () => {
+  console.log("Reading log file...");
+
+  for await (const line of simulateFileReader(fakeFileLines)) {
+    console.log("Log Line:", line);
+  }
+
+  console.log("Done reading file!");
+})();
+
+
+</script>
+</body>
+</html>
