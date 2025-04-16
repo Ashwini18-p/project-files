@@ -8,35 +8,46 @@
 <body>
     <script>
         //prototypal inheritance
-let person = {
-    greet: function() {
-        alert("Hello!");
-    }
-};
-let student = Object.create(person);
+// let person = {
+//     greet: function() {
+//         alert("Hello!");
+//     }
+// };
+// let student = Object.create(person);
 
-student.study = function() {
-    alert("Studying...");
-};
-student.greet(); 
-student.study();
+// student.study = function() {
+//     alert("Studying...");
+// };
+// student.greet(); 
+// student.study();
 
 
 
 
 
 //creating f.prototype
-        function Person(name) {
-    this.name = name;
-}
-Person.prototype.greet = function () {
-    alert(`Hello, my name is ${this.name}`);
-};
+//         function Person(name) {
+//     this.name = name;
+// }
+// Person.prototype.greet = function () {
+//     alert(`Hello, my name is ${this.name}`);
+// };
 
-let person1 = new Person("Ash");
-let person2 = new Person("Darshik");
-person1.greet(); 
-person2.greet(); 
+// let person1 = new Person("Ash");
+// let person2 = new Person("Darshik");
+// person1.greet(); 
+// person2.greet(); 
+
+
+
+
+
+
+function sum(... a) {
+  return a + b;
+}
+
+alert( sum(1, 2, 3, 4, 5) );
 
     </script>
 </body>

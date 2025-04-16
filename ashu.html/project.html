@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Form Validation Example</h2>
+        <form id="userForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <span class="error" id="usernameError"></span>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span class="error" id="emailError"></span>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        class ValidationError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "ValidationError";
+            }
+        }
+
+        class PropertyRequiredError extends ValidationError {
+            constructor(property) {
+                super(`${property} is required`);
+                this.name = "PropertyRequiredError";
+                this.property = property;
+            }
+        }
+
+        document.getElementById("userForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let username = document.getElementById("username").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let usernameError = document.getElementById("usernameError");
+            let emailError = document.getElementById("emailError");
+            
+            usernameError.textContent = "";
+            emailError.textContent = "";
+
+            try {
+                if (!username) throw new PropertyRequiredError("Username");
+                if (!email) throw new PropertyRequiredError("Email");
+                if (!email.includes("@")) throw new ValidationError("Invalid email format");
+                
+                alert("Form submitted successfully!");
+            } catch (error) {
+                if (error instanceof PropertyRequiredError) {
+                    if (error.property === "Username") usernameError.textContent = error.message;
+                    if (error.property === "Email") emailError.textContent = error.message;
+                } else if (error instanceof ValidationError) {
+                    emailError.textContent = error.message;
+                } else {
+                    console.error(error);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
